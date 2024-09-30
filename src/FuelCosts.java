@@ -9,7 +9,6 @@ public class FuelCosts
         double gasPrice = 0.00;
         double distanceFullTank = 0.00;
         double price100miles = 0.00;
-        String trash = "";
 
         Scanner in = new Scanner(System.in);
 
@@ -28,7 +27,7 @@ public class FuelCosts
             else
             {
                 in.next();
-                System.out.println("Bad input, try again.");
+                System.out.println("Bad input, try again. ");
             }
         }
 
