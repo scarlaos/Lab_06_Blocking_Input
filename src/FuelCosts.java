@@ -9,41 +9,61 @@ public class FuelCosts
         double gasPrice = 0.00;
         double distanceFullTank = 0.00;
         double price100miles = 0.00;
-        boolean rationalInput;
+        String trash = "";
 
         Scanner in = new Scanner(System.in);
-        do
+
+        while(true) // gas tank
         {
-            rationalInput = true;
-            System.out.println("Enter the amount of gallons in your gas tank:  ");
-            tankGal = in.nextDouble();
-            if(tankGal <= 0)
-            {
-                System.out.println("Enter a positive number for validity. ");
-                rationalInput = false;
-            }
-            if(rationalInput)
-            {
-                System.out.println("Enter your miles per gallon: ");
-                milesPerGal = in.nextDouble();
-                    if(milesPerGal <= 0)
-                    {
-                        System.out.println("Enter a positive number for validity. ");
-                        rationalInput = false;
-                    }
-            }
-            if(rationalInput)
-            {
-                System.out.println("Enter the gas price: ");
-                gasPrice = in.nextDouble();
-                if(gasPrice <= 0)
-                {
-                    System.out.println("Enter a positive number for validity. ");
-                    rationalInput = false;
+            System.out.println("Enter the amount of gallons you get in your tank: ");
+            if(in.hasNextDouble()) {
+                tankGal = in.nextDouble();
+
+                if (tankGal > 0) {
+                    break;
+                } else {
+                    System.out.println("Enter a positive number: ");
                 }
             }
+            else
+            {
+                in.next();
+                System.out.println("Bad input, try again.");
+            }
+        }
 
-        }while(!rationalInput);
+        while(true) // miles per gal
+        {
+            System.out.println("Enter the amount of miles you get per gallon: ");
+            if(in.hasNextDouble()) {
+                milesPerGal = in.nextDouble();
+                if (milesPerGal > 0) {
+                    break;
+                } else {
+                    System.out.println("Bad input, enter the amount of miles you get per gallon: ");
+                }
+            } else {
+                in.next();
+                System.out.println("Bad input, try again.");
+            }
+        }
+
+        while(true) // gas price
+        {
+            System.out.println("Enter the price per gallon for your gas: ");
+            if(in.hasNextDouble()) {
+                gasPrice = in.nextDouble();
+                if (gasPrice > 0) {
+                    break;
+                } else {
+                    System.out.println("Bad input, enter the price per gallon for gas: ");
+                }
+            }
+            else {
+                in.next();
+                System.out.println("Bad input, try again.");
+            }
+        }
 
         distanceFullTank = tankGal * milesPerGal;
         price100miles = (gasPrice / milesPerGal) * 100;
